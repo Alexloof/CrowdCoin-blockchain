@@ -25,7 +25,7 @@ contract Campaign {
     
     Request[] public requests;
     address public manager;
-    uint public minimumContribtion;
+    uint public minimumContribution;
     mapping(address => bool) public approvers;
     uint public approversCount;
     
@@ -36,11 +36,11 @@ contract Campaign {
     
     function Campaign(uint minimum, address creator) public {
         manager = creator;
-        minimumContribtion = minimum;
+        minimumContribution = minimum;
     }
     
     function contribute() public payable {
-        require(msg.value > minimumContribtion);
+        require(msg.value > minimumContribution);
         approvers[msg.sender] = true;
         approversCount++;
     }
@@ -75,5 +75,21 @@ contract Campaign {
         
         request.recipient.transfer(request.value);
         request.complete = true;
+    }
+
+    function getSummary() public view returns (
+        uint, uint, uint, uint, address
+        ) {
+        return (
+          minimumContribution,
+          this.balance,
+          requests.length,
+          approversCount,
+          manager
+        );
+    }
+
+    function getRequestsCount() public view returns (uint) {
+        return requests.length;
     }
 }
