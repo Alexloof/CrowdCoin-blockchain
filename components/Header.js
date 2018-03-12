@@ -5,7 +5,7 @@ import { Link } from '../routes'
 export default class MenuExampleMenus extends Component {
   render() {
     return (
-      <Menu style={{ marginTop: '10px' }}>
+      <Menu>
         <Link route="/">
           <a className="item">CrowdCoin</a>
         </Link>
