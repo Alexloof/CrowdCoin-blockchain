@@ -13,7 +13,7 @@ export default class MenuExampleMenus extends Component {
           <Link route="/">
             <a className="item">Campaigns</a>
           </Link>
-          <Link route="/campaigns/new">
+          <Link prefetch route="/campaigns/new">
             <a className="item">+</a>
           </Link>
         </Menu.Menu>
